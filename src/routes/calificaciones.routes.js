@@ -1,7 +1,7 @@
 
 const express = require('express');
 const router = express.Router();
-const calificacionController = require('../controllers/calificacion.controller');
+const calificacionController = require('../controllers/calificaciones.controller');
 
 router.get('/', calificacionController.findAll);
 router.get('/:id', calificacionController.findById);

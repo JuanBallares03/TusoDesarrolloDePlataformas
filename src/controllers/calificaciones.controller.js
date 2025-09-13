@@ -1,4 +1,4 @@
-const calificacionService = require('../services/calificacion.service');
+const calificacionService = require('../services/calificaciones.service');
 
 exports.findAll = async (req, res) => {
     try {

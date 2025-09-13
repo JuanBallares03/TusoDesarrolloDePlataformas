@@ -1,4 +1,4 @@
-const usuariosService = require('../services/user.service');
+const usuariosService = require('../services/usuarios.service');
 
 exports.findAll = async (req, res) => {
     try {
