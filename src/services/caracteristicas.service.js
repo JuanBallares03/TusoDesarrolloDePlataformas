@@ -9,7 +9,7 @@ exports.findById = async (id_caracteristica) => {
     const [rows] = await db.execute('SELECT * FROM caracteristicas WHERE id_caracteristica = ?', [id_caracteristica]);
     return rows[0];
 };
-console.log(newCaracteristica.Nombre, newCaracteristica.Descripcion);
+
 exports.create = async (newCaracteristica) => {
     const [result] = await db.execute(
         'INSERT INTO caracteristicas (Nombre, Descripcion) VALUES (?, ?)',

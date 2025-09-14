@@ -1,32 +1,32 @@
 const db = require('../config/db.config');
 
 exports.findAll = async () => {
-    const [rows] = await db.execute('SELECT * FROM caracteristicas');
+    const [rows] = await db.execute('SELECT * FROM calificacion');
     return rows;
 };
 
-exports.findById = async (id_caracteristica) => {
-    const [rows] = await db.execute('SELECT * FROM caracteristicas WHERE id_caracteristica = ?', [id_caracteristica]);
+exports.findById = async (id_calificacion) => {
+    const [rows] = await db.execute('SELECT * FROM calificacion WHERE id_calificacion = ?', [id_calificacion]);
     return rows[0];
 };
 
-exports.create = async (newCaracteristica) => {
+exports.create = async (newCalificacion) => {
     const [result] = await db.execute(
-        'INSERT INTO caracteristicas (Nombre, Descripcion) VALUES (?, ?)',
-        [newCaracteristica.Nombre, newCaracteristica.Descripcion]
+        'INSERT INTO calificacion (Puntuacion, Reseña) VALUES (?, ?)',
+        [newCalificacion.Puntuacion, newCalificacion.Reseña]
     );
-    return { id_caracteristica: result.insertId, ...newCaracteristica };
+    return { id_calificacion: result.insertId, ...newCalificacion};
 };
 
-exports.update = async (id_caracteristica, updatedCaracteristica) => {
+exports.update = async (id_calificacion, updatedCalifiacion) => {
     const [result] = await db.execute(
-        'UPDATE caracteristicas SET Nombre = ?, Descripcion = ? WHERE id_caracteristica = ?',
-        [updatedCaracteristica.Nombre, updatedCaracteristica.Descripcion, id_caracteristica]
+        'UPDATE calificacion SET Puntuacion = ?, Reseña = ? WHERE id_calificacion = ?',
+        [updatedCalifiacion.Puntuacion, updatedCalifiacion.Reseña, id_calificacion]
     );
     return result.affectedRows > 0;
 };
 
-exports.remove = async (id_caracteristica) => {
-    const [result] = await db.execute('DELETE FROM caracteristicas WHERE id_caracteristica = ?', [id_caracteristica]);
+exports.remove = async (id_calificacion) => {
+    const [result] = await db.execute('DELETE FROM calificacion WHERE id_calificacion = ?', [id_calificacion]);
     return result.affectedRows > 0;
 };
