@@ -13,7 +13,10 @@ exports.findById = async (id_calificacion) => {
 exports.create = async (newCalificacion) => {
     const [result] = await db.execute(
         'INSERT INTO calificacion (Puntuacion, Reseña) VALUES (?, ?)',
-        [newCalificacion.Puntuacion, newCalificacion.Reseña]
+        [
+            newCalificacion.Puntuacion, 
+            newCalificacion.Reseña
+        ]
     );
     return { id_calificacion: result.insertId, ...newCalificacion};
 };

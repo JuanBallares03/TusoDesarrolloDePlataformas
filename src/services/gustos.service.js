@@ -13,10 +13,12 @@ exports.findById = async (id_gustos) => {
 exports.create = async (newgustos) => {
     const [result] = await db.execute(
         'INSERT INTO gustos (id_gustos,Nombre, Descripcion, Estado) VALUES (?,?,?,?)',
-        newgustos.id_gustos,
-        newgustos.Nombre,
-        newgustos.Descripcion,
-        newgustos.Estado
+        [
+            newgustos.id_gustos,
+            newgustos.Nombre,
+            newgustos.Descripcion,
+            newgustos.Estado
+        ]
     );
     return { id_gustos: result.insertId, ...newgustos};
 };

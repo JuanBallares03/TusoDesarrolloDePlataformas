@@ -12,14 +12,18 @@ exports.findById = async (id_chat) => {
 
 exports.create = async (newChat) => {
     const [result] = await db.execute(
-        'INSERT INTO chats () VALUES ()'
+        'INSERT INTO chats (id_chat) VALUES (?)',
+        [newChat.id_chat]
     );
-    return { id_chat: result.insertId };
+    return { id_chat: result.insertId || newChat.id_chat };
 };
 
 exports.update = async (id_chat, updatedChat) => {
-    // No hay campos para actualizar, solo retorna false
-    return false;
+    const [result] = await db.execute(
+        'UPDATE chats SET id_chat = ? WHERE id_chat = ?',
+        [updatedChat.id_chat, id_chat]
+    );
+    return result.affectedRows > 0;
 };
 
 exports.remove = async (id_chat) => {

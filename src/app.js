@@ -7,10 +7,13 @@ const chatsRoutes = require("./routes/chats.routes");
 const codigosRoutes = require("./routes/codigos.routes");
 const comentariosRoutes = require("./routes/comentarios.routes");
 const destinosRoutes = require("./routes/destinos.routes");
-const feedsRoutes = require("./routes/feeds.routes")
-const gustosRoutes = require("./routes/gustos.routes")
-const invitacionRoutes = require("./routes/invitaciones.routes")
-
+const feedsRoutes = require("./routes/feeds.routes");
+const gustosRoutes = require("./routes/gustos.routes");
+const invitacionRoutes = require("./routes/invitaciones.routes");
+const lugarRoutes = require("./routes/lugares.routes");
+const matchRoutes = require("./routes/matches.routes");
+const membresiaRoutes = require('./routes/membresias.routes');
+const metodoRoutes = require("./routes/metodos.routes")
 
 
 const usuariosRoutes = require("./routes/usuarios.routes");
@@ -30,6 +33,10 @@ app.use("/api/destinos", destinosRoutes);
 app.use("/api/feeds",feedsRoutes);
 app.use("/api/gustos",gustosRoutes);
 app.use("/api/invitaciones",invitacionRoutes);
+app.use("/api/lugares", lugarRoutes);
+app.use("/api/matches",matchRoutes);
+app.use("/api/membresias", membresiaRoutes);
+app.use("/api/metodos" , metodoRoutes);
 app.use("/api/usuarios", usuariosRoutes);
 
 
