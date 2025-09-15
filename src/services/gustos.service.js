@@ -26,7 +26,7 @@ exports.create = async (newgustos) => {
 exports.update = async (id_gustos, updatedgustos) => {
     const [result] = await db.execute(
         'UPDATE gustos SET id_gustos = ?, Descripcion = ? , Likes = ? , Fecha_publi = ? WHERE id = ?',
-        [updatedgustos.id_gustos, updatedgustos.Nombre,updatedgustos.Descripcion,updatedgustos.Estado, id_gustos]);
+        [updatedgustos.Nombre,updatedgustos.Descripcion,updatedgustos.Estado, id_gustos]);
     return result.affectedRows > 0;
 };
 exports.remove = async (id_gustos) => {

@@ -15,13 +15,13 @@ exports.create = async (newChat) => {
         'INSERT INTO chats (id_chat) VALUES (?)',
         [newChat.id_chat]
     );
-    return { id_chat: result.insertId || newChat.id_chat };
+    return { id_chat: result.insertId, ...newChat};
 };
 
 exports.update = async (id_chat, updatedChat) => {
     const [result] = await db.execute(
-        'UPDATE chats SET id_chat = ? WHERE id_chat = ?',
-        [updatedChat.id_chat, id_chat]
+        'UPDATE chats SET id_chat = ? WHERE id_chat = ?'
+        // [updatedChat.id_chat, id_chat]
     );
     return result.affectedRows > 0;
 };

@@ -26,7 +26,7 @@ exports.create = async (newFeed) => {
 exports.update = async (id_feed, updatedFeed) => {
     const [result] = await db.execute(
         'UPDATE feed SET id_feed = ?, Descripcion = ? , Likes = ? , Fecha_publi = ? WHERE id = ?',
-        [updatedFeed.id_feed, updatedFeed.Descripcion,updatedFeed.Likes,updatedFeed.Fecha_publi, id_feed]);
+        [updatedFeed.Descripcion,updatedFeed.Likes,updatedFeed.Fecha_publi, id_feed]);
     return result.affectedRows > 0;
 };
 exports.remove = async (id_feed) => {

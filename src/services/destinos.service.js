@@ -24,7 +24,7 @@ exports.create = async (newDestino) => {
 exports.update = async (id_destinos, updatedDestino) => {
     const [result] = await db.execute(
         'UPDATE usuarios SET Nombre1 = ?, Nombre2 = ?  WHERE id = ?',
-        [updatedDestino.id_destino, updatedDestino.Nombre_destino, id_destinos]);
+        [updatedDestino.Nombre_destino, id_destinos]);
     return result.affectedRows > 0;
 };
 exports.remove = async (id_destinos) => {

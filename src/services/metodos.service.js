@@ -21,7 +21,7 @@ exports.create = async (newMetodo) => {
             newMetodo.Tipo_pago
         ]
     );
-    return { id_metodo: result.insertId || newMetodo.id_metodo, ...newMetodo };
+    return { id_metodo: result.insertId, ...newMetodo };
 };
 
 exports.update = async (id_metodo, updatedMetodo) => {

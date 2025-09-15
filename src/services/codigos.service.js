@@ -25,7 +25,7 @@ exports.create = async (newCodigo) => {
 exports.update = async (id_codigo, updatedCodigo) => {
     const [result] = await db.execute(
         'UPDATE codigos SET id_codigo = ?, Nombre = ?, Valor = ? WHERE id = ?',
-        [updatedCodigo.id_codigo, updatedCodigo.Nombre,updatedCodigo.Valor, id_codigo]);
+        [ updatedCodigo.Nombre,updatedCodigo.Valor, id_codigo]);
     return result.affectedRows > 0;
 };
 //Ctrl + Shift + L Para seleccionar una palabra repetida

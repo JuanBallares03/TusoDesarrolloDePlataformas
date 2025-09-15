@@ -14,8 +14,8 @@ const lugarRoutes = require("./routes/lugares.routes");
 const matchRoutes = require("./routes/matches.routes");
 const membresiaRoutes = require('./routes/membresias.routes');
 const metodoRoutes = require("./routes/metodos.routes")
-
-
+const notificacionRoutes = require("./routes/notificaciones.routes")
+const rolRoutes = require ("./routes/roles.routes")
 const usuariosRoutes = require("./routes/usuarios.routes");
 
 const app = express();
@@ -38,6 +38,10 @@ app.use("/api/matches",matchRoutes);
 app.use("/api/membresias", membresiaRoutes);
 app.use("/api/metodos" , metodoRoutes);
 app.use("/api/usuarios", usuariosRoutes);
+app.use("/api/notificaciones" , notificacionRoutes)
+app.use("/api/roles" , rolRoutes)
+
+
 
 
 app.listen(PORT, () => {

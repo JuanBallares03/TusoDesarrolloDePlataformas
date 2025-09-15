@@ -24,7 +24,7 @@ exports.create = async (newMembresia) => {
             newMembresia.Estado
         ]
     );
-    return { id_membresia: result.insertId || newMembresia.id_membresia, ...newMembresia };
+    return { id_membresia: result.insertId, ...newMembresia };
 };
 
 exports.update = async (id_membresia, updatedMembresia) => {
