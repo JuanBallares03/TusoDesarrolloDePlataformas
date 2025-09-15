@@ -1,0 +1,33 @@
+const db = require('../config/db.config');
+
+exports.findAll = async () => {
+    const [rows] = await db.execute('SELECT * FROM gustos');
+    return rows;
+};
+
+exports.findById = async (id_gustos) => {
+    const [rows] = await db.execute('SELECT * FROM gustos WHERE id_gustos = ?', [id_gustos]);
+    return rows[0];
+};
+
+exports.create = async (newgustos) => {
+    const [result] = await db.execute(
+        'INSERT INTO gustos (id_gustos,Nombre, Descripcion, Estado) VALUES (?,?,?,?)',
+        newgustos.id_gustos,
+        newgustos.Nombre,
+        newgustos.Descripcion,
+        newgustos.Estado
+    );
+    return { id_gustos: result.insertId, ...newgustos};
+};
+
+exports.update = async (id_gustos, updatedgustos) => {
+    const [result] = await db.execute(
+        'UPDATE gustos SET id_gustos = ?, Descripcion = ? , Likes = ? , Fecha_publi = ? WHERE id = ?',
+        [updatedgustos.id_gustos, updatedgustos.Nombre,updatedgustos.Descripcion,updatedgustos.Estado, id_gustos]);
+    return result.affectedRows > 0;
+};
+exports.remove = async (id_gustos) => {
+    const [result] = await db.execute('DELETE FROM gustos WHERE id_gustos = ?', [id_gustos]);
+    return result.affectedRows > 0;
+};
