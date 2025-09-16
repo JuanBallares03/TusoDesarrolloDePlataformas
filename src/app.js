@@ -13,10 +13,14 @@ const invitacionRoutes = require("./routes/invitaciones.routes");
 const lugarRoutes = require("./routes/lugares.routes");
 const matchRoutes = require("./routes/matches.routes");
 const membresiaRoutes = require('./routes/membresias.routes');
-const metodoRoutes = require("./routes/metodos.routes")
-const notificacionRoutes = require("./routes/notificaciones.routes")
-const rolRoutes = require ("./routes/roles.routes")
+const metodoRoutes = require("./routes/metodos.routes");
+const notificacionRoutes = require("./routes/notificaciones.routes");
+const rolRoutes = require ("./routes/roles.routes");
+const ubiRoutes = require("./routes/ubicaciones.routes")
 const usuariosRoutes = require("./routes/usuarios.routes");
+const viajeRoutes = require("./routes/viajes.routes")
+
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -37,10 +41,14 @@ app.use("/api/lugares", lugarRoutes);
 app.use("/api/matches",matchRoutes);
 app.use("/api/membresias", membresiaRoutes);
 app.use("/api/metodos" , metodoRoutes);
-app.use("/api/usuarios", usuariosRoutes);
-app.use("/api/notificaciones" , notificacionRoutes)
-app.use("/api/roles" , rolRoutes)
+app.use("/api/notificaciones" , notificacionRoutes);
+app.use("/api/roles" , rolRoutes);
+app.use("/api/ubicaciones", ubiRoutes);
 
+
+
+app.use("/api/usuarios", usuariosRoutes);
+app.use("/api/viajes", viajeRoutes)
 
 
 

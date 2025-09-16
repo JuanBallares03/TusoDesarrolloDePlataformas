@@ -24,7 +24,7 @@ exports.create = async (newCodigo) => {
 
 exports.update = async (id_codigo, updatedCodigo) => {
     const [result] = await db.execute(
-        'UPDATE codigos SET id_codigo = ?, Nombre = ?, Valor = ? WHERE id = ?',
+        'UPDATE codigos SET Nombre = ?, Valor = ? WHERE id = ?',
         [ updatedCodigo.Nombre,updatedCodigo.Valor, id_codigo]);
     return result.affectedRows > 0;
 };

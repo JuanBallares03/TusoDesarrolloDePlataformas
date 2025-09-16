@@ -24,7 +24,7 @@ exports.create = async (newinvitaciones) => {
 
 exports.update = async (id_invitacion, updatedinvitaciones) => {
     const [result] = await db.execute(
-        'UPDATE invitaciones SET id_invitacion = ?, Descripcion = ? , Likes = ? , Fecha_publi = ? WHERE id = ?',
+        'UPDATE invitaciones SET Descripcion = ? , Likes = ? , Fecha_publi = ? WHERE id = ?',
         [updatedinvitaciones.Estado,updatedinvitaciones.Rol,id_invitacion]);
     return result.affectedRows > 0;
 };

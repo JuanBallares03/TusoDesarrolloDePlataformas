@@ -26,7 +26,7 @@ exports.create = async (newlugares) => {
 
 exports.update = async (id_lugares, updatedlugares) => {
     const [result] = await db.execute(
-        'UPDATE lugares SET id_lugares = ?, Descripcion = ? , Likes = ? , Fecha_publi = ? WHERE id = ?',
+        'UPDATE lugares SET Descripcion = ? , Likes = ? , Fecha_publi = ? WHERE id = ?',
         [updatedlugares.Nombre,updatedlugares.Lat,updatedlugares.Longitud,updatedlugares.Precio,id_lugares]);
     return result.affectedRows > 0;
 };

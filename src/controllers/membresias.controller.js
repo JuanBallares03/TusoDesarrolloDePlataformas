@@ -1,32 +1,55 @@
-const db = require('../config/db.config');
+const membresiaService = require('../services/membresias.service');
 
-exports.findAll = async () => {
-    const [rows] = await db.execute('SELECT * FROM membresias');
-    return rows;
+exports.findAll = async (req, res) => {
+    try {
+        const membresias = await membresiaService.findAll();
+        res.status(200).json(membresias);
+    } catch (error) {
+        res.status(500).json({ message: "Error al obtener las membresias", error });
+    }
 };
 
-exports.findById = async (id_membresia) => {
-    const [rows] = await db.execute('SELECT * FROM membresias WHERE id_membresia = ?', [id_membresia]);
-    return rows[0];
+exports.findById = async (req, res) => {
+    try {
+        const membresia = await membresiaService.findById(req.params.id);
+        if (!membresia) {
+            return res.status(404).json({ message: "membresia no encontrada" });
+        }
+        res.status(200).json(membresia);
+    } catch (error) {
+        res.status(500).json({ message: "Error al obtener el membresia", error });
+    }
 };
 
-exports.create = async (newMembresia) => {
-    const [result] = await db.execute(
-        'INSERT INTO membresias (id_membresia, Tipo, Fecha_inicio, Fecha_fin, Estado) VALUES (?, ?, ?, ?, ?)',
-        [newMembresia.id_membresia, newMembresia.Tipo, newMembresia.Fecha_inicio, newMembresia.Fecha_fin, newMembresia.Estado]
-    );
-    return { id_membresia: newMembresia.id_membresia, ...newMembresia };
+exports.create = async (req, res) => {
+    try {
+        const newMembresia= await membresiaService.create(req.body);
+        res.status(201).json(newMembresia);
+    } catch (error) {
+        res.status(500).json({ message: "Error al crear el membresia", error });
+    }
 };
 
-exports.update = async (id_membresia, updatedMembresia) => {
-    const [result] = await db.execute(
-        'UPDATE membresias SET Tipo = ?, Fecha_inicio = ?, Fecha_fin = ?, Estado = ? WHERE id_membresia = ?',
-        [updatedMembresia.Tipo, updatedMembresia.Fecha_inicio, updatedMembresia.Fecha_fin, updatedMembresia.Estado, id_membresia]
-    );
-    return result.affectedRows > 0;
+exports.update = async (req, res) => {
+    try {
+        const updated = await membresiaService.update(req.params.id, req.body);
+        if (!updated) {
+            return res.status(404).json({ message: "membresia no encontrada" });
+        }
+        res.status(200).json({ message: "membresia actualizada exitosamente" });
+    } catch (error) {
+        res.status(500).json({ message: "Error al actualizar la membresia", error });
+    }
 };
 
-exports.remove = async (id_membresia) => {
-    const [result] = await db.execute('DELETE FROM membresias WHERE id_membresia = ?', [id_membresia]);
-    return result.affectedRows > 0;
+exports.remove = async (req, res) => {
+    try {
+        const removed = await membresiaService.remove(req.params.id);
+        if (!removed) {
+            return res.status(404).json({ message: "membresia no encontrada" });
+        }
+        res.status(200).json({ message: "membresia eliminada exitosamente" });
+    } catch (error) {
+        res.status(500).json({ message: "Error al eliminar la membresia", error });
+    }
 };

@@ -23,7 +23,7 @@ exports.create = async (newmatch) => {
 
 exports.update = async (id_match, updatedmatch) => {
     const [result] = await db.execute(
-        'UPDATE `match` SET id_match = ?, Fecha = ? WHERE id = ?',
+        'UPDATE `match` SET Fecha = ? WHERE id = ?',
         [updatedmatch.Fecha, id_match]);
     return result.affectedRows > 0;
 };

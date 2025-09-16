@@ -27,10 +27,7 @@ exports.create = async (newMetodo) => {
 exports.update = async (id_metodo, updatedMetodo) => {
     const [result] = await db.execute(
         'UPDATE metodos SET Tipo_pago = ? WHERE id_metodo = ?',
-        [
-            updatedMetodo.Tipo_pago,
-            id_metodo
-        ]
+        [updatedMetodo.Tipo_pago,id_metodo]
     );
     return result.affectedRows > 0;
 };

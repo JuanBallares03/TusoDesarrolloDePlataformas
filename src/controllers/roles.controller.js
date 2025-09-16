@@ -23,8 +23,8 @@ exports.findById = async (req, res) => {
 
 exports.create = async (req, res) => {
     try {
-        const newrol = await rolesService.create(req.body);
-        res.status(201).json(newrol);
+        const newRol = await rolesService.create(req.body);
+        res.status(201).json(newRol);
     } catch (error) {
         res.status(500).json({ message: "Error al crear el", error });
     }

@@ -23,7 +23,7 @@ exports.create = async (newDestino) => {
 
 exports.update = async (id_destinos, updatedDestino) => {
     const [result] = await db.execute(
-        'UPDATE usuarios SET Nombre1 = ?, Nombre2 = ?  WHERE id = ?',
+        'UPDATE destinos SET Nombre_destino = ? WHERE id = ?',
         [updatedDestino.Nombre_destino, id_destinos]);
     return result.affectedRows > 0;
 };
