@@ -19,8 +19,9 @@ const rolRoutes = require ("./routes/roles.routes");
 const ubiRoutes = require("./routes/ubicaciones.routes")
 const usuariosRoutes = require("./routes/usuarios.routes");
 const viajeRoutes = require("./routes/viajes.routes")
-
-
+const Tipo_calRoutes = require("./routes/tipo_calificaciones.routes")
+const Tipo_docRoutes = require("./routes/tipo_documentos.routes")
+const Tipo_turRoutes = require("./routes/tipo_turismos.routes")
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -44,12 +45,11 @@ app.use("/api/metodos" , metodoRoutes);
 app.use("/api/notificaciones" , notificacionRoutes);
 app.use("/api/roles" , rolRoutes);
 app.use("/api/ubicaciones", ubiRoutes);
-
-
-
+app.use("/api/tipo_calificaciones", Tipo_calRoutes);
+app.use("/api/tipo_documentos", Tipo_docRoutes);
 app.use("/api/usuarios", usuariosRoutes);
-app.use("/api/viajes", viajeRoutes)
-
+app.use("/api/viajes", viajeRoutes);
+app.use("/api/tipo_turismos ", Tipo_turRoutes);
 
 
 app.listen(PORT, () => {
