@@ -12,9 +12,8 @@ exports.findById = async (id_match) => {
 
 exports.create = async (newmatch) => {
     const [result] = await db.execute(
-        'INSERT INTO `match` (id_match,Fecha) VALUES (?,?)',
+        'INSERT INTO `match` (Fecha) VALUES (?)',
         [
-            newmatch.id_match,
             newmatch.Fecha
         ]
     );

@@ -15,9 +15,8 @@ exports.findById = async (id_metodo) => {
 
 exports.create = async (newMetodo) => {
     const [result] = await db.execute(
-        'INSERT INTO metodos (id_metodo, Tipo_pago) VALUES (?, ?)',
+        'INSERT INTO metodos  Tipo_pago) VALUES (?)',
         [
-            newMetodo.id_metodo,
             newMetodo.Tipo_pago
         ]
     );

@@ -12,9 +12,8 @@ exports.findById = async (id_feed) => {
 
 exports.create = async (newFeed) => {
     const [result] = await db.execute(
-        'INSERT INTO feed (id_feed,Descripcion, Likes, Fecha_publi) VALUES (?,?,?,?)',
+        'INSERT INTO feed (Descripcion, Likes, Fecha_publi) VALUES (?,?,?,?)',
         [
-            newFeed.id_feed,
             newFeed.Descripcion,
             newFeed.Likes,
             newFeed.Fecha_publi

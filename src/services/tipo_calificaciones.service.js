@@ -13,9 +13,8 @@ exports.findById = async (id_tipo_calificacion) => {
 exports.create = async (newTipo_calificacion) => {
     const [result] = await db.execute(
         'INSERT INTO tipo_calificacion (Tipo_cal) VALUES (?)',
-        [   newTipo_calificacion.id_tipo_calificacion,
+        [   
             newTipo_calificacion.Tipo_cal
-
         ]   
     );
     return { id_tipo_calificacion: result.insertId, ...newTipo_calificacion };

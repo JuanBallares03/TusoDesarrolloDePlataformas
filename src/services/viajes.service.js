@@ -14,8 +14,8 @@ exports.create = async (newviaje) => {
     const [result] = await db.execute(
         'INSERT INTO viajes (Num_personas, Presupuesto,Preferencias_distancia) VALUES (?,?,?)',
         [
-            newviaje.id_viajes,
             newviaje.Num_personas, 
+            newviaje.Preferencias_distancia,
             newviaje.Descripcion
         ]
     );

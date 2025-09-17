@@ -12,9 +12,8 @@ exports.findById = async (id_codigo) => {
 
 exports.create = async (newCodigo) => {
     const [result] = await db.execute(
-        'INSERT INTO codigos (id_codigo, Nombre, Valor) VALUES (?, ?, ?)',
+        'INSERT INTO codigos (Nombre, Valor) VALUES (?, ?)',
         [
-            newCodigo.id_codigo,
             newCodigo.Nombre,
             newCodigo.Valor
         ]

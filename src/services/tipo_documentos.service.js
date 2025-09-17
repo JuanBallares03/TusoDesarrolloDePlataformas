@@ -12,8 +12,8 @@ exports.findById = async (id_tipo_id) => {
 
 exports.create = async (newTipo_documento) => {
     const [result] = await db.execute(
-        'INSERT INTO tipo_documento (id_tipo_id,Nombre,Numero_doc) VALUES (?,?,?)',
-        [   newTipo_documento.id_tipo_id,
+        'INSERT INTO tipo_documento (Nombre,Numero_doc) VALUES (?,?,?)',
+        [   
             newTipo_documento.Nombre,
             newTipo_documento.Numero_doc
         ]   

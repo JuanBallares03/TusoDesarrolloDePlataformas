@@ -12,9 +12,8 @@ exports.findById = async (id_ubicacion) => {
 
 exports.create = async (newUbicacion) => {
     const [result] = await db.execute(
-        'INSERT INTO ubicacion (id_ubicacion, Pais, Departamento, Ciudad, Direccion) VALUES (?,?,?,?,?)',
+        'INSERT INTO ubicacion ( Pais, Departamento, Ciudad, Direccion) VALUES (?,?,?,?)',
         [
-            newUbicacion.id_ubicacion,
             newUbicacion.Pais,
             newUbicacion.Departamento,
             newUbicacion.Ciudad,

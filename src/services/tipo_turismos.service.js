@@ -12,8 +12,8 @@ exports.findById = async (id_tipo_turismo) => {
 
 exports.create = async (newTipo_turismo) => {
     const [result] = await db.execute(
-        'INSERT INTO tipo_turismo (id_tipo_turismo,Tipo_de_turismo,Descripcion) VALUES (?,?,?)',
-        [   newTipo_turismo.id_tipo_turismo,
+        'INSERT INTO tipo_turismo (Tipo_de_turismo,Descripcion) VALUES (?,?)',
+        [  
             newTipo_turismo.Tipo_de_turismo,
             newTipo_turismo.Descripcion
         ]   

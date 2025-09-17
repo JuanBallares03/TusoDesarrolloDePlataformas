@@ -13,7 +13,7 @@ exports.findById = async (id_caracteristica) => {
 exports.create = async (newCaracteristica) => {
     const [result] = await db.execute(
         'INSERT INTO caracteristicas (Nombre, Descripcion) VALUES (?, ?)',
-        [   newCaracteristica.id_caracteristica,
+        [ 
             newCaracteristica.Nombre, 
             newCaracteristica.Descripcion
         ]

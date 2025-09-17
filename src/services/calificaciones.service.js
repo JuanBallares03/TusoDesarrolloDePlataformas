@@ -14,7 +14,6 @@ exports.create = async (newCalificacion) => {
     const [result] = await db.execute(
         'INSERT INTO calificacion (Puntuacion, Reseña) VALUES (?, ?)',
         [   
-            newCalificacion.id_calificacion,
             newCalificacion.Puntuacion, 
             newCalificacion.Reseña
         ]
