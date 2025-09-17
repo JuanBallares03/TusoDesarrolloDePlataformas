@@ -12,9 +12,8 @@ exports.findById = async (id_roles) => {
 
 exports.create = async (newRol) => {
     const [result] = await db.execute(
-        'INSERT INTO roles (id_roles, Nombre) VALUES (?, ?)',
+        'INSERT INTO roles (Nombre) VALUES (?)',
         [
-            newRol.id_roles,
             newRol.Nombre
         ]
     );
