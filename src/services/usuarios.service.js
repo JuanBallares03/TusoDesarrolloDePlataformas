@@ -12,8 +12,9 @@ exports.findById = async (id_usuario) => {
 
 exports.create = async (newUser) => {
     const [result] = await db.execute(
-        'INSERT INTO usuarios (Nombre1, Nombre2, Apellido1, Apellido2, Correo_electronico, Telefono, Fecha_nac, Sexo, Ocupacion, Puntos_xp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        'INSERT INTO usuarios (id_usuario,Nombre1, Nombre2, Apellido1, Apellido2, Correo_electronico, Telefono, Fecha_nac, Sexo, Ocupacion, Puntos_xp) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
         [
+            newUser.id_usuario,
             newUser.Nombre1,
             newUser.Nombre2,
             newUser.Apellido1,
